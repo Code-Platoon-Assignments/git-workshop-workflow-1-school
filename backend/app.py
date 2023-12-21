@@ -16,14 +16,15 @@ class Student:
     """student"""
     def __init__(self, data):
         self.id = data.get('id')
-        self.name = data.get('name')
+        self.first_name = data.get('first_name')
+        self.last_name = data.get('last_name')
 
 all_the_students = []
 
 # Add some students
-all_the_students.append(Student({'id': 1, 'name': 'Harry'}))
-all_the_students.append(Student({'id': 2, 'name': 'Hermione'}))
-all_the_students.append(Student({'id': 3, 'name': 'Ron'}))
+all_the_students.append(Student({'id': 1, 'first_name': 'Harry', 'last_name': 'Potter'}))
+all_the_students.append(Student({'id': 2, 'first_name': 'Hermione', 'last_name': 'Granger'}))
+all_the_students.append(Student({'id': 2, 'first_name': 'Ron', 'last_name': 'Weasley'}))
 
 @app.route('/', methods=['GET'])
 def base_route():
