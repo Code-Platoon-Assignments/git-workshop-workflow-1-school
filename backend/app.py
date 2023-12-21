@@ -19,23 +19,24 @@ class Student:
         self.first_name = data.get('first_name')
         self.last_name = data.get('last_name')
 
-all_active_students = []
+all_the_students = []
 
 # Add some students
-all_active_students.append(Student({'id': 1, 'first_name': 'Harry', 'last_name': 'Potter'}))
-all_active_students.append(Student({'id': 2, 'first_name': 'Hermione', 'last_name': 'Granger'}))
-all_active_students.append(Student({'id': 2, 'first_name': 'Ron', 'last_name': 'Weasley'}))
+all_the_students.append(Student({'id': 1, 'first_name': 'Harry', 'last_name': 'Potter'}))
+all_the_students.append(Student({'id': 2, 'first_name': 'Hermione', 'last_name': 'Granger'}))
+all_the_students.append(Student({'id': 2, 'first_name': 'Ron', 'last_name': 'Weasley'}))
 
 @app.route('/', methods=['GET'])
 def base_route():
-    return "ping"
+    return "ding"
 
 @app.route('/students', methods=['GET'])
 def get_students():
+    print("Adam's print statement on line 34.")
     """get all students"""
     student_list = [
         {'id': student.id, 'name': student.name}
-        for student in all_active_students
+        for student in all_the_students
     ]
 
     return jsonify(student_list)
