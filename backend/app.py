@@ -22,9 +22,9 @@ class Student:
 students_list = []
 
 # Add some students
-students_list.append(Student({'id': 1, 'first_name': 'Harry', 'last_name': 'Potter', 'email' : 'harry@email.com'}))
-students_list.append(Student({'id': 2, 'first_name': 'Hermione', 'last_name': 'Granger', 'email' : 'hermoine@email.com'}))
-students_list.append(Student({'id': 3, 'first_name': 'Ron', 'last_name': 'Weasley', 'email' : 'ron@email.com'}))
+students_list.append(Student({'id': 1, 'first_name': 'Han', 'last_name': 'Solo', 'email' : 'han@email.com'}))
+students_list.append(Student({'id': 2, 'first_name': 'Leia', 'last_name': 'Skywalker', 'email' : 'leia@gmail.com'}))
+students_list.append(Student({'id': 3, 'first_name': 'Luke', 'last_name': 'Skywalker', 'email' : 'luke@email.com'}))
 
 @app.route('/', methods=['GET'])
 def base_route():
