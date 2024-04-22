@@ -22,9 +22,9 @@ class Student:
 all_the_students = []
 
 # Add some students
-all_the_students.append(Student({'id': 1, 'first_name': 'Harry', 'last_name': 'Potter'}))
-all_the_students.append(Student({'id': 2, 'first_name': 'Hermione', 'last_name': 'Granger'}))
-all_the_students.append(Student({'id': 2, 'first_name': 'Ron', 'last_name': 'Weasley'}))
+all_the_students.append(Student({'id': 1, 'first_name': 'Han', 'last_name': 'Solo'}))
+all_the_students.append(Student({'id': 2, 'first_name': 'Leia', 'last_name': 'Skywalker'}))
+all_the_students.append(Student({'id': 2, 'first_name': 'Luke', 'last_name': 'Skywalker'}))
 
 @app.route('/', methods=['GET'])
 def base_route():
