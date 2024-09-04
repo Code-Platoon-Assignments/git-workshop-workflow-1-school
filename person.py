@@ -1,5 +1,5 @@
-class Student:
-    """student"""
+class Person:
+    """Person"""
     def __init__(self, data):
         self.id = data.get('id')
         self.first_name = data.get('first_name')

@@ -1,42 +1,76 @@
+import os
+
+from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
-import os
-from dotenv import load_dotenv
-from student import Student
+from person import Person
 
 load_dotenv()
 
-print(os.environ['FLASK_ENV'])
-print(os.environ['MY_SECRET_API_KEY'])
+print(os.environ["FLASK_ENV"])
+print(os.environ["MY_SECRET_API_KEY"])
 
 app = Flask(__name__)
 CORS(app)
 
 
-students_list = []
+person_list = []
 
-# Add some students
-students_list.append(Student({'id': 1, 'first_name': 'Han', 'last_name': 'Solo', 'email' : 'han@email.com', 'force_powers': False }))
-students_list.append(Student({'id': 2, 'first_name': 'Leia', 'last_name': 'Skywalker', 'email' : 'leia@gmail.com', 'force_powers': True }))
-students_list.append(Student({'id': 3, 'first_name': 'Luke', 'last_name': 'Skywalker', 'email' : 'luke@email.com', 'force_powers': True }))
+# Add some person
+person_list.append(
+    Person(
+        {
+            "id": 1, 
+            "first_name": "Han", 
+            "last_name": "Solo", 
+            "email": "han@email.com",
+            "force_powers": False,
+        }
+    )
+)
+person_list.append(
+    Person(
+        {
+            "id": 2,
+            "first_name": "Leia",
+            "last_name": "Skywalker",
+            "email": "leia@gmail.com",
+            "force_powers": True,
+        }
+    )
+)
+person_list.append(
+    Person(
+        {
+            "id": 3,
+            "first_name": "Luke",
+            "last_name": "Skywalker",
+            "email": "luke@email.com",
+            "force_powers": True,
+        }
+    )
+)
 
-@app.route('/', methods=['GET'])
+
+@app.route("/", methods=["GET"])
 def base_route():
     return "hello"
 
-@app.route('/students', methods=['GET'])
-def get_students():
+
+@app.route("/person", methods=["GET"])
+def get_person():
     print("Adam's print statement on line 34.")
-    """get all students"""
-    student_list = [
-        {'id': student.id, 'first_name': student.first_name, 'email': student.email, 'force_powers': student.force_powers }
-        for student in students_list
+    """get all person"""
+    Person_list = [
+        {"id": Person.id, "first_name": Person.first_name, "email": Person.email, "force_powers": Person.force_powers}
+        for Person in person_list
     ]
 
-    return jsonify(student_list)
+    return jsonify(Person_list)
+
 
 IS_DEBUG_ENABLED = False
-if os.environ['FLASK_ENV'] == 'dev':
+if os.environ["FLASK_ENV"] == "dev":
     IS_DEBUG_ENABLED = True
 
 app.run(debug=IS_DEBUG_ENABLED)
