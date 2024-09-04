@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
+from person import Person
 
 load_dotenv()
 
@@ -13,21 +14,18 @@ app = Flask(__name__)
 CORS(app)
 
 
-class Person:
-    """Person"""
-
-    def __init__(self, data):
-        self.id = data.get("id")
-        self.first_name = data.get("first_name")
-        self.last_name = data.get("last_name")
-
-
 person_list = []
 
 # Add some person
 person_list.append(
     Person(
-        {"id": 1, "first_name": "Han", "last_name": "Solo", "email": "han@email.com"}
+        {
+            "id": 1, 
+            "first_name": "Han", 
+            "last_name": "Solo", 
+            "email": "han@email.com",
+            "force_powers": False,
+        }
     )
 )
 person_list.append(
@@ -37,6 +35,7 @@ person_list.append(
             "first_name": "Leia",
             "last_name": "Skywalker",
             "email": "leia@gmail.com",
+            "force_powers": True,
         }
     )
 )
@@ -47,6 +46,7 @@ person_list.append(
             "first_name": "Luke",
             "last_name": "Skywalker",
             "email": "luke@email.com",
+            "force_powers": True,
         }
     )
 )
@@ -62,7 +62,7 @@ def get_person():
     print("Adam's print statement on line 34.")
     """get all person"""
     Person_list = [
-        {"id": Person.id, "first_name": Person.first_name, "email": Person.email}
+        {"id": Person.id, "first_name": Person.first_name, "email": Person.email, "force_powers": Person.force_powers}
         for Person in person_list
     ]
 
