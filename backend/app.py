@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
+from student import Student
 
 load_dotenv()
 
@@ -12,19 +13,12 @@ app = Flask(__name__)
 CORS(app)
 
 
-class Student:
-    """student"""
-    def __init__(self, data):
-        self.id = data.get('id')
-        self.first_name = data.get('first_name')
-        self.last_name = data.get('last_name')
-
 students_list = []
 
 # Add some students
-students_list.append(Student({'id': 1, 'first_name': 'Han', 'last_name': 'Solo', 'email' : 'han@email.com'}))
-students_list.append(Student({'id': 2, 'first_name': 'Leia', 'last_name': 'Skywalker', 'email' : 'leia@gmail.com'}))
-students_list.append(Student({'id': 3, 'first_name': 'Luke', 'last_name': 'Skywalker', 'email' : 'luke@email.com'}))
+students_list.append(Student({'id': 1, 'first_name': 'Han', 'last_name': 'Solo', 'email' : 'han@email.com', 'force_powers': False }))
+students_list.append(Student({'id': 2, 'first_name': 'Leia', 'last_name': 'Skywalker', 'email' : 'leia@gmail.com', 'force_powers': True }))
+students_list.append(Student({'id': 3, 'first_name': 'Luke', 'last_name': 'Skywalker', 'email' : 'luke@email.com', 'force_powers': True }))
 
 @app.route('/', methods=['GET'])
 def base_route():
@@ -35,7 +29,7 @@ def get_students():
     print("Adam's print statement on line 34.")
     """get all students"""
     student_list = [
-        {'id': student.id, 'first_name': student.first_name, 'email': student.email}
+        {'id': student.id, 'first_name': student.first_name, 'email': student.email, 'force_powers': student.force_powers }
         for student in students_list
     ]
 
