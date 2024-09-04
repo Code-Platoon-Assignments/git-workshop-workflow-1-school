@@ -28,7 +28,7 @@ students_list.append(Student({'id': 3, 'first_name': 'Luke', 'last_name': 'Skywa
 
 @app.route('/', methods=['GET'])
 def base_route():
-    return "ding"
+    return "hello"
 
 @app.route('/students', methods=['GET'])
 def get_students():
